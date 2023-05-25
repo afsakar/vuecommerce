@@ -51,12 +51,12 @@ onMounted(async () => {
 
             <div class="space-y-3">
                 <a href="#" class="btn bg-base-100 w-full border-0">
-                    <img src="images/icons/social/google.svg" class="mr-3" width="20" height="20" />
+                    <img src="/images/icons/social/google.svg" class="mr-3" width="20" height="20" />
                     <span>Continue with Google</span>
                 </a>
 
                 <a href="#" class="btn bg-base-100 w-full border-0">
-                    <img src="images/icons/social/facebook.svg" class="mr-3" width="20" height="20" />
+                    <img src="/images/icons/social/facebook.svg" class="mr-3" width="20" height="20" />
                     <span>Continue with Facebook</span>
                 </a>
             </div>
