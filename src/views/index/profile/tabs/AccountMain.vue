@@ -129,7 +129,7 @@ function deleteAddress() {
             <figure class="flex flex-row mb-4">
                 <div>
                     <a href="#" class="block w-20 h-20 rounded-lg border border-gray-200 overflow-hidden">
-                        <img src="images/items/10.jpg" alt="Title" />
+                        <img src="/images/items/10.jpg" alt="Title" />
                     </a>
                 </div>
                 <figcaption class="ml-3">
@@ -143,7 +143,7 @@ function deleteAddress() {
             <figure class="flex flex-row mb-4">
                 <div>
                     <a href="#" class="block w-20 h-20 rounded-lg border border-gray-200 overflow-hidden">
-                        <img src="images/items/11.jpg" alt="Title" />
+                        <img src="/images/items/11.jpg" alt="Title" />
                     </a>
                 </div>
                 <figcaption class="ml-3">
@@ -157,7 +157,7 @@ function deleteAddress() {
             <figure class="flex flex-row mb-4">
                 <div>
                     <a href="#" class="block w-20 h-20 rounded-lg border border-gray-200 overflow-hidden">
-                        <img src="images/items/12.jpg" alt="Title" />
+                        <img src="/images/items/12.jpg" alt="Title" />
                     </a>
                 </div>
                 <figcaption class="ml-3">
@@ -221,7 +221,7 @@ function deleteAddress() {
             <figure class="flex flex-row mb-4">
                 <div>
                     <a href="#" class="block w-20 h-20 rounded-lg border border-gray-200 overflow-hidden">
-                        <img src="images/items/1.jpg" alt="Title" />
+                        <img src="/images/items/1.jpg" alt="Title" />
                     </a>
                 </div>
                 <figcaption class="ml-3">
@@ -235,7 +235,7 @@ function deleteAddress() {
             <figure class="flex flex-row mb-4">
                 <div>
                     <a href="#" class="block w-20 h-20 rounded-lg border border-gray-200 overflow-hidden">
-                        <img src="images/items/2.jpg" alt="Title" />
+                        <img src="/images/items/2.jpg" alt="Title" />
                     </a>
                 </div>
                 <figcaption class="ml-3">
