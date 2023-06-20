@@ -130,7 +130,7 @@ function submit() {
     const validation = intus.validate(
         form.value,
         {
-            useDifferentAddress: [isBoolean()],
+            'useDifferentAddress': [isBoolean()],
             'shippingAddress.fullName': [isRequired(), isMin(8)],
             'shippingAddress.address': [isRequired(), isMin(8)],
             'shippingAddress.city': [isRequired(), isMin(3)],
@@ -148,7 +148,7 @@ function submit() {
             'card.expiryMonth': [isRequired(), isMax(2), isMin(2)],
             'card.expiryYear': [isRequired(), isMax(2), isMin(2)],
             'card.cvc': [isRequired(), isMax(3), isMin(3)],
-            termAndConditions: [isAccepted()]
+            'termAndConditions': [isAccepted()]
         },
         {
             useDifferentAddress: 'Use same address',
