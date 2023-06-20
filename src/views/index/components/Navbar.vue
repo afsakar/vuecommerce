@@ -3,7 +3,7 @@ import { computed, onMounted, ref } from 'vue';
 import { formatPrice } from '@/composables/utils.js';
 import { useCartStore } from '@/composables/cartStore.js';
 import { useAuthStore } from '@/composables/authStore.js';
-import DarkToggle from '@/components/site/DarkToggle.vue';
+import DarkToggle from '@/views/index/components/DarkToggle.vue';
 
 const showNavbar = ref(false);
 
@@ -108,7 +108,7 @@ const logout = () => {
                                 <li>
                                     <a :href="$router.resolve({ name: 'profile' }).href" class="justify-between"> Profile </a>
                                 </li>
-                                <li><button type="button" @click="userStore.logout">Logout</button></li>
+                                <li><a type="button" @click="userStore.logout">Logout</a></li>
                             </ul>
                         </div>
                     </div>

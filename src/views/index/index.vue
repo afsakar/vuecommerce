@@ -3,9 +3,9 @@ import axios from 'axios';
 import { useHead } from '@vueuse/head';
 import { computed, onMounted, ref } from 'vue';
 import { categories } from '@/composables/category.js';
-import ProductCard from '@/components/site/ProductCard.vue';
-import CategoryIcon from '@/components/site/CategoryIcon.vue';
-import CardSkeleton from '@/components/site/CardSkeleton.vue';
+import ProductCard from '@/views/index/components/ProductCard.vue';
+import CategoryIcon from '@/views/index/components/CategoryIcon.vue';
+import CardSkeleton from '@/views/index/components/CardSkeleton.vue';
 import { useAddressStore } from '@/composables/addressStore';
 
 const addressStore = useAddressStore();
@@ -100,7 +100,7 @@ async function getRandomProduct() {
         <!-- container //end -->
     </section>
     <!-- SECTION-ICONMENU //END -->
-    
+
     <!-- SECTION-CONTENT -->
     <section class="py-10">
         <div class="container max-w-screen-xl mx-auto px-4">

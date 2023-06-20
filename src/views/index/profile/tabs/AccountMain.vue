@@ -1,5 +1,5 @@
 <script setup>
-import Modal from '@/components/site/Modal.vue';
+import Modal from '@/views/index/components/Modal.vue';
 import { computed, onMounted, ref, inject } from 'vue';
 import AddressModal from '../components/AddressModal.vue';
 import { useAuthStore } from '@/composables/authStore.js';

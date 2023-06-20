@@ -4,6 +4,9 @@ import AccountMain from './tabs/AccountMain.vue';
 import { onMounted, provide, ref, watch } from 'vue';
 import PasswordChange from './tabs/PasswordChange.vue';
 import AccountSettings from './tabs/AccountSettings.vue';
+import { useAuthStore } from '@/composables/authStore.js';
+
+const authStore = useAuthStore();
 
 onMounted(async () => {
     isGuest();
@@ -48,9 +51,12 @@ function setActiveTab(tab) {
         <div class="container max-w-screen-xl mx-auto px-4">
             <div class="flex flex-col md:flex-row -mx-4">
                 <aside class="md:w-1/3 lg:w-1/4 px-4">
-                    <ul class="menu bg-base-200 rounded-lg p-2 mb-5 space-y-1">
+                    <ul class="menu bg-base-200 p-2 mb-5 space-y-1 rounded-box">
+                        <li v-if="authStore.user?.isAdmin">
+                            <a :href="$router.resolve({ name: 'dashboard' }).href">Dashboard</a>
+                        </li>
                         <li v-for="(tab, index) in tabs" :key="index">
-                            <button @click="setActiveTab(index)" :class="{ active: activeTab === index }">{{ tabNames[index] }}</button>
+                            <a @click="setActiveTab(index)" :class="{ 'btn-primary': activeTab === index }">{{ tabNames[index] }}</a>
                         </li>
                     </ul>
                 </aside>

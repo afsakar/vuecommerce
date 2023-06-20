@@ -1,9 +1,9 @@
 <script setup>
 import { computed, ref } from 'vue';
-import Toast from '@/components/site/Toast.vue';
-import DarkToggle from '@/components/site/DarkToggle.vue';
-import ScrollTop from '@/components/site/ScrollTop.vue';
-import Navbar from '@/components/site/Navbar.vue';
+import Toast from '@/views/index/components/Toast.vue';
+import DarkToggle from '@/views/index/components/DarkToggle.vue';
+import ScrollTop from '@/views/index/components/ScrollTop.vue';
+import Navbar from '@/views/index/components/Navbar.vue';
 import { useAuthStore } from '@/composables/authStore.js';
 import { useNotificationStore } from '@/composables/notificationStore.js';
 

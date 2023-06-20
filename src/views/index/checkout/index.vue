@@ -3,7 +3,7 @@ import intus from 'intus';
 import Shopier from 'shopier-api';
 import { useHead } from '@vueuse/head';
 import isGuest from '@/middleware/isGuest.js';
-import Modal from '@/components/site/Modal.vue';
+import Modal from '@/views/index/components/Modal.vue';
 import CreditCard from './components/CreditCard.vue';
 import { useCartStore } from '@/composables/cartStore.js';
 import { useAuthStore } from '@/composables/authStore.js';

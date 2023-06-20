@@ -68,7 +68,8 @@ export const useAuthStore = defineStore('authStore', {
                             setDoc(doc(db, 'users', this.userData.uid), {
                                 email: data.email,
                                 displayName: data.displayName,
-                                phone: data.phone
+                                phone: data.phone,
+                                isAdmin: false
                             });
                             sendEmailVerification(auth.currentUser).then(() => {
                                 console.log('Email sent!');

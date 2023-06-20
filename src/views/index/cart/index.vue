@@ -5,7 +5,7 @@ import { useHead } from '@vueuse/head';
 import isGuest from '@/middleware/isGuest.js';
 import { useAuthStore } from '@/composables/authStore.js';
 import { useCartStore } from '@/composables/cartStore.js';
-import ProductCard from '@/components/site/ProductCard.vue';
+import ProductCard from '@/views/index/components/ProductCard.vue';
 import { formatPrice, reverseSlug } from '@/composables/utils.js';
 
 const userStore = useAuthStore();

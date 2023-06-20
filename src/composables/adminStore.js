@@ -1,4 +1,4 @@
-import { ref } from 'firebase/storage';
+import { ref } from 'vue';
 import { defineStore } from 'pinia';
 import { onMounted } from 'vue';
 

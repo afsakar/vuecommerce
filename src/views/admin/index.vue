@@ -1,12 +1,8 @@
 <script setup>
-import { IconHome } from '@tabler/icons-vue';
 </script>
 
 <template>
-    <h1 class="text-3xl flex items-center justify-center gap-3">
-        <IconHome />
-        <span>Home</span>
-    </h1>
+    <Header title="Dashboard" icon="home" />
 </template>
 
 <style scoped></style>

@@ -1,6 +1,6 @@
 <script setup>
-import { onMounted, ref } from 'vue';
-import { NDataTable } from 'naive-ui';
+import { onMounted, ref, h } from 'vue';
+import { NDataTable, NButton } from 'naive-ui';
 import products from '@/products.json';
 import { db } from '@/plugins/firebase';
 import { useProductStore } from '@/composables/productStore';
@@ -20,7 +20,7 @@ function addNew() {
 }
 
 onMounted(() => {
-    productStore.productList(30);
+    productStore.productList(100);
     productStore.getSingleProduct(`product-${14}`);
 });
 
@@ -49,14 +49,33 @@ const columns = [
         title: 'Category',
         key: 'category',
         width: 100
+    },
+    {
+        title: 'Action',
+        key: 'actions',
+        width: 100,
+        render(row) {
+            return h(
+                NButton,
+                {
+                    strong: true,
+                    tertiary: true,
+                    size: 'small',
+                    onClick: () => alert(row.title)
+                },
+                { default: () => 'Get Title' }
+            );
+        }
     }
 ];
 </script>
 
 <template>
-    <h1 class="text-3xl flex items-center justify-center gap-3">
-        <span>Products</span>
-    </h1>
+    <Header title="Products" icon="home">
+        <template #actions>
+            <button class="btn btn-primary btn-sm">Add New</button>
+        </template>
+    </Header>
 
     <n-data-table striped ref="tableRef" class="overflow-x-auto" :columns="columns" :data="productStore.products" :pagination="{ pageSize: 5 }" :bordered="false" />
 </template>
