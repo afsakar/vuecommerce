@@ -8,7 +8,7 @@ const notificationStore = useNotificationStore();
     <teleport to="body">
         <transition name="slide-fade">
             <div v-if="notificationStore.notification.show" class="toast toast-top toast-end mt-14">
-                <div class="rounded-md p-3" :class="{ 'alert-success': notificationStore.notification.type === 'success', 'alert-error': notificationStore.notification.type === 'error' }">
+                <div class="rounded-md p-3 alert" :class="{ 'alert-success': notificationStore.notification.type === 'success', 'alert-error': notificationStore.notification.type === 'error' }">
                     <div class="flex items-center justify-center gap-2">
                         <span>{{ notificationStore.notification.message }}</span>
                     </div>

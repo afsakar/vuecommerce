@@ -1,7 +1,18 @@
-import { defineStore } from 'pinia';
-import { db } from '@/plugins/firebase';
-import { useAuthStore } from '@/composables/authStore.js';
-import { collection, doc, getDoc, getDocs, query, where, addDoc, onSnapshot, deleteDoc } from 'firebase/firestore';
+import {defineStore} from 'pinia';
+import {db} from '@/plugins/firebase';
+import {useAuthStore} from '@/composables/authStore.js';
+import {
+    collection,
+    doc,
+    getDoc,
+    getDocs,
+    query,
+    where,
+    addDoc,
+    onSnapshot,
+    deleteDoc,
+    updateDoc
+} from 'firebase/firestore';
 
 export const useAddressStore = defineStore('addressStore', {
     state: () => ({
@@ -26,12 +37,15 @@ export const useAddressStore = defineStore('addressStore', {
         async addressList() {
             try {
                 const querySnapshot = await getDocs(this.addressQuery);
-                querySnapshot.forEach((doc) => {
-                    this.addresses.push({
-                        id: doc.id,
-                        ...doc.data()
+                if (this.addresses.length > 0) {
+                    return;
+                } else {
+                    querySnapshot.forEach((doc) => {
+                        this.addresses.push({
+                            ...doc.data()
+                        });
                     });
-                });
+                }
             } catch (e) {
                 console.log(e);
             }
@@ -41,7 +55,7 @@ export const useAddressStore = defineStore('addressStore', {
                 const docRef = doc(db, 'addresses', id);
                 const docSnap = await getDoc(docRef);
                 if (docSnap.exists()) {
-                    this.address = { ...docSnap.data(), id: docSnap.id };
+                    this.address = {...docSnap.data()};
                 } else {
                     console.log('No such document!');
                 }
@@ -53,8 +67,13 @@ export const useAddressStore = defineStore('addressStore', {
             const docRef = await addDoc(collection(db, 'addresses'), data);
             console.log('Document written with ID: ', docRef.id);
 
+            await updateDoc(docRef, {
+                id: docRef.id,
+                createdAt: new Date()
+            });
+
             onSnapshot(this.addressQuery, (querySnapshot) => {
-                this.addresses = querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
+                this.addresses = querySnapshot.docs.map((doc) => ({...doc.data()}));
             });
         },
         async deleteAddress(id) {
@@ -62,7 +81,7 @@ export const useAddressStore = defineStore('addressStore', {
             await deleteDoc(docRef);
 
             onSnapshot(this.addressQuery, (querySnapshot) => {
-                this.addresses = querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
+                this.addresses = querySnapshot.docs.map((doc) => ({...doc.data()}));
             });
         }
     }
