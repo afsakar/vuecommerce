@@ -308,7 +308,7 @@ function submit() {
                                     </span>
                                 </label>
 
-                                <div v-show="form.useDifferentAddress">
+                                <div>
                                     <hr class="border border-base-300 my-3" />
                                     <h2 class="text-xl font-semibold mb-5">Billing information</h2>
                                     <div>
