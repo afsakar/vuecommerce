@@ -84,7 +84,6 @@ const form = ref({
     },
     user: userStore.user?.uid,
     termAndConditions: true,
-    useDifferentAddress: false,
     information: ''
 });
 
@@ -106,17 +105,7 @@ function changeAddress(e) {
 watch(
     form,
     (val) => {
-        if (!val.useDifferentAddress) {
-            form.value.billingAddress = form.value.shippingAddress;
-        } else {
-            form.value.billingAddress = {
-                fullName: '',
-                address: '',
-                city: '',
-                district: '',
-                postCode: ''
-            };
-        }
+        val.billingAddress = val.shippingAddress;
     },
     { deep: true }
 );
@@ -130,28 +119,26 @@ function submit() {
     const validation = intus.validate(
         form.value,
         {
-            'useDifferentAddress': [isBoolean()],
             'shippingAddress.fullName': [isRequired(), isMin(8)],
             'shippingAddress.address': [isRequired(), isMin(8)],
             'shippingAddress.city': [isRequired(), isMin(3)],
             'shippingAddress.district': [isRequired(), isMin(3)],
             'shippingAddress.postCode': [isRequired(), isNumeric()],
             'shippingAddress.phone': [isRequired(), isNumeric()],
-            'billingAddress.fullName': [isRequiredIf('useDifferentAddress', true), isMin(8)],
-            'billingAddress.address': [isRequiredIf('useDifferentAddress', true), isMin(8)],
-            'billingAddress.city': [isRequiredIf('useDifferentAddress', true), isMin(3)],
-            'billingAddress.district': [isRequiredIf('useDifferentAddress', true), isMin(3)],
-            'billingAddress.postCode': [isRequiredIf('useDifferentAddress', true), isNumeric()],
-            'billingAddress.phone': [isRequiredIf('useDifferentAddress', true), isNumeric()],
+            'billingAddress.fullName': [isRequired(), isMin(8)],
+            'billingAddress.address': [isRequired(), isMin(8)],
+            'billingAddress.city': [isRequired(), isMin(3)],
+            'billingAddress.district': [isRequired(), isMin(3)],
+            'billingAddress.postCode': [isRequired(), isNumeric()],
+            'billingAddress.phone': [isRequired(), isNumeric()],
             'card.name': [isRequired(), isMin(8)],
             'card.number': [isRequired(), isMax(19), isMin(19)],
             'card.expiryMonth': [isRequired(), isMax(2), isMin(2)],
             'card.expiryYear': [isRequired(), isMax(2), isMin(2)],
             'card.cvc': [isRequired(), isMax(3), isMin(3)],
-            'termAndConditions': [isAccepted()]
+            termAndConditions: [isAccepted()]
         },
         {
-            useDifferentAddress: 'Use same address',
             shippingAddress: {
                 fullName: 'Full name',
                 address: 'Address',
@@ -300,13 +287,6 @@ function submit() {
                                     </label>
                                 </div>
                                 <!-- radio selection .//end -->
-
-                                <label class="flex items-center w-max my-4">
-                                    <input v-model="form.useDifferentAddress" type="checkbox" class="checkbox checkbox-primary checkbox-sm" />
-                                    <span class="ml-2 inline-block">
-                                        <p class="text-sm">Use different address for billing</p>
-                                    </span>
-                                </label>
 
                                 <div>
                                     <hr class="border border-base-300 my-3" />
